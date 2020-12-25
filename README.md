@@ -45,6 +45,8 @@ function checkParameter(parameters: object, parameterName: string, regExp: RegEx
         checkParameter(user, 'firstName', /^[A-Z][a-z]+$/).unwrap();
         checkParameter(user, 'lastName', /^[A-Z][a-z]+$/).unwrap();
         checkParameter(user, 'age', /^[1-9][0-9]?$/).unwrap();
+        ctx.status = 200;
+        ctx.body = 'ok';
     } catch (error) {
         if (error instanceof ResultError) {
             const data = error.unwrap();
