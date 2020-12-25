@@ -20,7 +20,7 @@ function checkParameter(parameter: string, regExp: RegExp){
             return ResultFail(new ResultError({
                 statusCode: 400,
                 body: JSON.stringify({
-                    error: 'Unsupported parametr value.'
+                    error: 'Unsupported parameter value.'
                 })
             }))
         }
