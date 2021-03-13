@@ -1,12 +1,14 @@
-export class ResultError<Data> extends Error {
-  private readonly result: Data;
+export class ResultError<D> extends Error {
+  private readonly result: D;
 
-  constructor(data: Data) {
+  constructor(data: D) {
     super();
     this.result = data;
   }
 
-  unwrap(): Data {
+  unwrap(): D {
     return this.result;
   }
 }
+
+export const resultError = <D>(data: D) => new ResultError(data);
