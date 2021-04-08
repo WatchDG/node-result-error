@@ -1,14 +1,21 @@
-export class ResultError<D> extends Error {
-  private readonly result: D;
+export class ResultError<DataType, MetadataType> extends Error {
+  private readonly result: DataType;
+  private readonly _metadata?: MetadataType;
 
-  constructor(data: D) {
+  constructor(data: DataType, metadata?: MetadataType) {
     super();
     this.result = data;
+    this._metadata = metadata;
   }
 
-  unwrap(): D {
+  unwrap(): DataType {
     return this.result;
+  }
+
+  metadata(): MetadataType | undefined {
+    return this._metadata;
   }
 }
 
-export const resultError = <D>(data: D) => new ResultError(data);
+export const resultError = <DataType, MetadataType>(data: DataType, metadata?: MetadataType) =>
+  new ResultError(data, metadata);
